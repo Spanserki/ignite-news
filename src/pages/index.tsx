@@ -5,7 +5,6 @@ export default function Home() {
     <>
       <h1 
         >
-          Hello <span>Word</span>
           <Head><title>Início | ig.News</title></Head>
       </h1>
     </>

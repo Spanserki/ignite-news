@@ -1,0 +1,48 @@
+.headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+.headerContent {
+    color: var(--white);
+    max-width: 50rem;
+
+    h4 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 3rem;
+    }
+
+    strong {
+        font-size: 72px;
+    }
+
+    span {
+        font-weight: bold;
+        color: var(--cyan-500);
+    }
+
+    p {
+        margin-top: 2rem;
+    }
+
+    button {
+        margin-top: 3rem;
+        padding: 10px;
+        width: 15rem;
+        border-radius: 80px;
+
+        font-weight: bolder;
+        background-color: var(--yellow-600);
+
+        transition: 0.5s;
+    }
+
+    button:hover {
+        background-color: var(--yellow-500);
+
+        transition: 0.5s;
+    }
+}
