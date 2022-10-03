@@ -1,0 +1,20 @@
+.SubscribeButoon {
+        margin-top: 3rem;
+        padding: 10px;
+        width: 15rem;
+        border-radius: 80px;
+    
+        font-weight: bolder;
+        background-color: var(--yellow-600);
+    
+        transition: 1s;
+
+        &:hover {
+            background-color: var(--yellow-500);
+            transition: 0.5s;
+
+            border-radius: 3rem 0 0 3rem;
+            width: 16rem;
+        }
+    }
+

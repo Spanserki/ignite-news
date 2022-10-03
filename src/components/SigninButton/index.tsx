@@ -12,7 +12,7 @@ export function SigninButton() {
             >
             <FaGithub color='#04d361'/>
             Guilherme Spanserki
-            <FiX color='#737380' className={styles.closeIcon} />
+            <FiX className={styles.closeIcon} />
         </button>
     ): (
         <button 

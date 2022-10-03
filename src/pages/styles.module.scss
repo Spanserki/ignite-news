@@ -28,21 +28,4 @@
         margin-top: 2rem;
     }
 
-    button {
-        margin-top: 3rem;
-        padding: 10px;
-        width: 15rem;
-        border-radius: 80px;
-
-        font-weight: bolder;
-        background-color: var(--yellow-600);
-
-        transition: 0.5s;
-    }
-
-    button:hover {
-        background-color: var(--yellow-500);
-
-        transition: 0.5s;
-    }
 }
