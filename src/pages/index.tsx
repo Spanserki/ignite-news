@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import Image from "next/image";
 import { SubscribeButton } from "../components/SubscribeButton";
 import { stripe } from "../services/stripe";
@@ -10,7 +10,6 @@ interface productProps {
         priceId: string;
         amount: number;
     }
-    
 }
 
 export default function Home({product}: productProps) {
@@ -37,10 +36,9 @@ export default function Home({product}: productProps) {
     
   )
 }
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const price = await stripe.prices.retrieve('price_1LopG9J6dkfts0iOqiZPSxVt')
-  
-console.log(price)
+
   const product = {
       priceId: price.id,
       amount: new Intl.NumberFormat('en-US', {
@@ -52,7 +50,8 @@ console.log(price)
 
   return {
       props: {
-          product
-      }
+          product,
+      },
+      revalidate: 60 * 60 * 24 //24hours
   }
 }
