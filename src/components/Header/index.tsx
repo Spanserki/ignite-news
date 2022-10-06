@@ -9,8 +9,8 @@ export function Header() {
                 <Image src='/assets/ig.news.png' width={108} height={30} objectFit='cover'/>
 
                 <nav>
-                    <a className={styles.active} href="">Home</a>
-                    <a className={styles.active} href="">Posts</a>
+                    <a className={styles.active} href="/">Home</a>
+                    <a href="/posts">Posts</a>
                 </nav>
 
                 <SigninButton />
