@@ -1,9 +1,8 @@
-import Head from 'next/head'
-import { GetStaticProps } from "next";
+import { useSession } from 'next-auth/react';
+import Head from 'next/head';
 import Image from "next/image";
 import { SubscribeButton } from "../components/SubscribeButton";
-import { stripe } from "../services/stripe";
-import styles from './styles.module.scss'
+import styles from './styles.module.scss';
 
 interface productProps {
     product: {
@@ -12,46 +11,30 @@ interface productProps {
     }
 }
 
-export default function Home({product}: productProps) {
-  return (
-    <>
-        <Head><title>Início | ig.News</title></Head>
+export default function Home({ product }: productProps) {
+    const { data: session } = useSession()
+    return (
+        <>
+            <Head><title>Início | ig.News</title></Head>
 
-        <header className={styles.headerContainer}>
-            <div className={styles.headerContent}>
-                <h4>👏 Hey, welcome</h4>
+            <header className={styles.headerContainer}>
+                <div className={styles.headerContent}>
+                    <h4>👏 Hey, welcome</h4>
 
-                <strong>News about the <span>React</span> world</strong>
+                    <strong>News about the <span>React</span> world</strong>
 
-                <p>Get acess to all the publications <span>for {product.amount} month</span></p>
+                    {!session && (
+                        <div>
+                            <SubscribeButton />
+                        </div>
+                    )}
+                </div>
 
-                <SubscribeButton/>
-            </div>
+                <div>
+                    <Image src="/assets/Mulher.png" width={334} height={520} objectFit="cover" />
+                </div>
+            </header>
+        </>
 
-            <div>
-                <Image src="/assets/Mulher.png" width={334} height={520} objectFit="cover"/>
-            </div>
-        </header>
-    </>
-    
-  )
-}
-export const getStaticProps: GetStaticProps = async () => {
-  const price = await stripe.prices.retrieve('price_1LopG9J6dkfts0iOqiZPSxVt')
-
-  const product = {
-      priceId: price.id,
-      amount: new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-
-      }).format(price.unit_amount / 100)
-  }
-
-  return {
-      props: {
-          product,
-      },
-      revalidate: 60 * 60 * 24 //24hours
-  }
+    )
 }
